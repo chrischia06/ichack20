@@ -34,6 +34,10 @@ def forecast():
 	return render_template("forecast.html")
 
 @app.route('/news')
-def forecast():
+def news():
 	return render_template("news.html")
+
+@app.route('/sources')
+def sources():
+	return render_template("sources.html")
 
