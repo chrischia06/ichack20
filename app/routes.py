@@ -68,17 +68,21 @@ def dashboards():
 
 @app.route('/social_media')
 def social_media():
-	r = requests.get("https://www.reddit.com/r/coronavirus/top.json?t=day")
-	x = r.json()
 	posts = []
-	for entry in x:
-		temp = {}
-		temp['time'] = datetime.fromtimestamp(entry['data']['created_utc']).strftime("%Y/%m/%d")
-		temp['title'] = entry['data']['title']
-		temp['score'] = entry['data']['score']
-		temp['num_comments'] = entry['data']['num_comments']
-		temp['permalink'] = entry['data']['permalink']
-		posts += temp
+	try:
+		r = requests.get("https://www.reddit.com/r/coronavirus/top.json?t=day")
+		x = r.json()
+		for entry in x:
+			temp = {}
+			print(entry)
+			temp['time'] = datetime.fromtimestamp(entry['data']['created_utc']).strftime("%Y/%m/%d")
+			temp['title'] = entry['data']['title']
+			temp['score'] = entry['data']['score']
+			temp['num_comments'] = entry['data']['num_comments']
+			temp['permalink'] = entry['data']['permalink']
+			posts += temp
+	except:
+		posts = []
 	return render_template("social_media.html", data=posts)
 
 @app.route('/forecast')
