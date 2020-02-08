@@ -1,0 +1,12 @@
+{% extends "base.html" %} 
+{% block content %}
+<h3> Google Search Trends </h3>
+<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/2051_RC11/embed_loader.js"></script>
+<script type="text/javascript">
+  trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"coronavirus","geo":"","time":"today 1-m"}],"category":0,"property":""}, {"exploreQuery":"date=today%201-m&q=coronavirus","guestPath":"https://trends.google.com:443/trends/embed/"});
+</script>
+
+<h3> Tweets about Coronavirus with more than 10000 Retweets </h3>
+<iframe src = 'https://twitter.com/search?q=min_retweets%3A10000%20-filter%3Areplies%20coronavirus&src=typed_query' width=100% height=300> </iframe>
+
+{% endblock %}

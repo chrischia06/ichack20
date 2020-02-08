@@ -25,9 +25,9 @@ def about():
 def john_hopkins():
 	return render_template("john_hopkins.html")
 
-@app.route('/twitter')
-def twitter():
-	return render_template("twitter.html")
+@app.route('/social_media')
+def social_media():
+	return render_template("social_media.html")
 
 @app.route('/forecast')
 def forecast():
