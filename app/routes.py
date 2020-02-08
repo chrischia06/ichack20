@@ -8,6 +8,8 @@ import requests
 @app.route('/statistics')
 @app.route('/')
 def index():
+	#API source:
+	#https://dev.to/pipedream/http-api-for-latest-wuhan-coronavirus-2019-ncov-data-20jj
 	r = requests.get("https://coronavirus.m.pipedream.net/")
 	data = r.json()
 	for i in range(len(data['rawData'])):
@@ -22,4 +24,16 @@ def about():
 @app.route('/john_hopkins')
 def john_hopkins():
 	return render_template("john_hopkins.html")
+
+@app.route('/twitter')
+def twitter():
+	return render_template("twitter.html")
+
+@app.route('/forecast')
+def forecast():
+	return render_template("forecast.html")
+
+@app.route('/news')
+def forecast():
+	return render_template("news.html")
 
