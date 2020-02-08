@@ -1,7 +1,5 @@
 from flask import render_template, flash, redirect,url_for, request,jsonify,json
 from app import app
-import dash
-import dash_html_components as html
 import pandas as pd
 import plotly.graph_objects as go
 import requests
