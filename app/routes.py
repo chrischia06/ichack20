@@ -1,10 +1,6 @@
-from flask import render_template, flash, redirect,url_for
+from flask import render_template, flash, redirect,url_for, request,jsonify,json
 from app import app
 
-from flask import request,jsonify,json
-from sklearn.metrics import roc_auc_score
-import numpy as np
-import pandas as pd
 
 import requests
 
