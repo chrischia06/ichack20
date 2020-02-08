@@ -3,7 +3,7 @@
 <div class ='container'>
 	
 	<table class="table table-striped">
-		<h2> Global Summary</h2>
+		<h2> Global Summary {{ time }} </h2>
 	<thead>
 	   <tr>
 	   	<th scope="col"> Province/ State</th>
@@ -40,8 +40,8 @@
 
 <div class ='container'>
 
-<table class="table table-striped">
-	<h2> Country Summary</h2>
+<table id='stats' class="table table-striped">
+	<h2> Country Summary {{ time }}</h2>
     <thead>
        <tr>
        	<th scope="col"> Province/ State</th>
@@ -66,6 +66,16 @@
 	{% endfor %}
 </tbody>
 </table>
+
+<script src = 'https://code.jquery.com/jquery-3.3.1.js'> </script>
+<script src = 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
+<script src = 'https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js'> </script>    
+    
+<script>
+	$(document).ready(function() {
+    $('#stats').DataTable();
+} );
+</script>
 </div>
 </body>
 </html>

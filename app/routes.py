@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import requests
 import json
+from datetime import datetime
 
 # from app.forms import SubmitForm
 
@@ -21,7 +22,7 @@ def statistics():
 	for i in range(len(data['rawData'])):
 		data['rawData'][i]['Province'] = data['rawData'][i]['Province/State']
 		data['rawData'][i]['Country'] = data['rawData'][i]['Country/Region']
-	return render_template("statistics.html", data = data)
+	return render_template("statistics.html", data = data, time =datetime.now().strftime("%Y/%m/%d"))
 
 @app.route('/readings')
 def readings():
@@ -67,7 +68,18 @@ def dashboards():
 
 @app.route('/social_media')
 def social_media():
-	return render_template("social_media.html")
+	r = requests.get("https://www.reddit.com/r/coronavirus/top.json?t=day")
+	x = r.json()
+	posts = []
+	for entry in x:
+		temp = {}
+		temp['time'] = datetime.fromtimestamp(entry['data']['created_utc']).strftime("%Y/%m/%d")
+		temp['title'] = entry['data']['title']
+		temp['score'] = entry['data']['score']
+		temp['num_comments'] = entry['data']['num_comments']
+		temp['permalink'] = entry['data']['permalink']
+		posts += temp
+	return render_template("social_media.html", data=posts)
 
 @app.route('/forecast')
 def forecast():

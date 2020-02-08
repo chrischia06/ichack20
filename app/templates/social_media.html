@@ -6,7 +6,38 @@
   trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"coronavirus","geo":"","time":"today 1-m"}],"category":0,"property":""}, {"exploreQuery":"date=today%201-m&q=coronavirus","guestPath":"https://trends.google.com:443/trends/embed/"});
 </script>
 
-<h3> Tweets about Coronavirus with more than 10000 Retweets </h3>
-<iframe src = 'https://twitter.com/search?q=min_retweets%3A10000%20-filter%3Areplies%20coronavirus&src=typed_query' width=100% height=300> </iframe>
+
+<table id='reddit' class="table table-striped">
+	<h3> Top Posts from reddit /r/CoronaVirus </h3>
+    <thead>
+       <tr>
+       	<th scope="col"> Date </th>
+       	<th scope="col"> Title</th>
+         <th scope="col"> No. of Upvotes</th>
+         <th scope="col"> No. of Comments </th>
+       </tr>
+     </thead>
+     <tbody>
+    {% for row in posts %}
+    <tr>
+    	<td>{{ row.time }}</td>		
+    	<td>{{ row.title }} <a href = 'https://reddit.com{{ row.permalink }}'>(Link)</a></td>		
+      <td>{{ row.score }}</td>
+      <td>{{ row.num_comments }}</td>
+    </tr>
+	{% endfor %}
+</tbody>
+</table>
+
+<script src = 'https://code.jquery.com/jquery-3.3.1.js'> </script>
+<script src = 'https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js'></script>
+<script src = 'https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js'> </script>    
+    
+<script>
+	$(document).ready(function() {
+    $('#stats').DataTable();
+} );
+</script>
+
 
 {% endblock %}
