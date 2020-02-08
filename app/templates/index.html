@@ -1,67 +1,17 @@
 {% extends "base.html" %} 
 {% block content %}
 <div class ='container'>
-	
-	<table class="table table-striped">
-		<h2> Global Summary</h2>
-	<thead>
-	   <tr>
-	   	<th scope="col"> Province/ State</th>
-	   	<th scope="col">Country/Region</th>
-	     <th scope="col">Confirmed </th>
-	     <th scope="col"> Deaths </th>
-	</tr>
-	<tbody>
-	<tr>
-		<td> Global </td>
-		<td>{{ data.summaryStats.global.confirmed }} </td>
-		<td>{{ data.summaryStats.global.recovered }} </td>
-		<td>{{ data.summaryStats.global.deaths }} </td>
-	</tr>
-	<tr>
-		<td> Mainland China </td>
-		<td>{{ data.summaryStats.mainlandChina.confirmed }} </td>
-		<td>{{ data.summaryStats.mainlandChina.recovered }} </td>
-		<td>{{ data.summaryStats.mainlandChina.deaths }} </td>
-	</tr>
-	<tr>
-		<td> Non Mainland China </td>
-		<td>{{ data.summaryStats.nonMainlandChina.confirmed }} </td>
-		<td>{{ data.summaryStats.nonMainlandChina.recovered }} </td>
-		<td>{{ data.summaryStats.nonMainlandChina.deaths }} </td>
-	</tr>	     		
-	 
-	</div>
-</div>
+	<h3> Source :  <a href = 'https://www.cdc.gov/coronavirus/2019-ncov/about/prevention-treatment.html'> Centers for Disease Control and Prevention - 2019 Novel Coronavirus </a></h3>
+	The best way to prevent infection is to avoid being exposed to this virus. However, as a reminder, CDC always recommends everyday preventive actions to help prevent the spread of respiratory viruses, including:
 
-<div class ='container'>
+    Wash your hands often with soap and water for at least 20 seconds, especially after going to the bathroom; before eating; and after blowing your nose, coughing, or sneezing.
+    If soap and water are not readily available, use an alcohol-based hand sanitizer with at least 60% alcohol. Always wash hands with soap and water if hands are visibly dirty.
+    Avoid touching your eyes, nose, and mouth with unwashed hands.
+    Avoid close contact with people who are sick.
+    Stay home when you are sick.
+    Cover your cough or sneeze with a tissue, then throw the tissue in the trash.
+    Clean and disinfect frequently touched objects and surfaces using a regular household cleaning spray or wipe.
 
-<table class="table table-striped">
-	<h2> Country Summary</h2>
-    <thead>
-       <tr>
-       	<th scope="col"> Province/ State</th>
-       	<th scope="col">Country/Region</th>
-         <th scope="col">Confirmed </th>
-         <th scope="col"> Deaths </th>
-         <th scope="col"> Recovered </th>
-       </tr>
-     </thead>
-     <tbody>
-    {% for row in data.rawData %}
-    <tr>
-    	<td>{{ row.Province }}</td>		
-    	<td>{{ row.Country }}</td>		
-      <td>{{ row.Confirmed }}</td>
-      <td>{{ row.Deaths }}</td>
-      <td>{{ row.Recovered }}</td>
-      
-    </tr>
-	{% endfor %}
-</tbody>
-</table>
-</div>
-</body>
 </html>
 
 {% endblock %}

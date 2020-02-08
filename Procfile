@@ -1,2 +1,2 @@
-web: gunicorn corona-ichack:app
+web: gunicorn corona_ichack:app
 
