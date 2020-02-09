@@ -92,9 +92,9 @@ def forecast():
 def news():
 	return render_template("news.html")
 
-@app.route('/policy')
-def policy():
-	return render_template("policy.html")
+@app.route('/economics')
+def economics():
+	return render_template("economics.html")
 
 @app.route('/financial')
 def financial():
