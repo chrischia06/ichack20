@@ -69,20 +69,19 @@ def dashboards():
 @app.route('/social_media')
 def social_media():
 	posts = []
-	try:
-		r = requests.get("https://www.reddit.com/r/coronavirus/top.json?t=day")
-		x = r.json()
-		for entry in x:
-			temp = {}
-			print(entry)
-			temp['time'] = datetime.fromtimestamp(entry['data']['created_utc']).strftime("%Y/%m/%d")
-			temp['title'] = entry['data']['title']
-			temp['score'] = entry['data']['score']
-			temp['num_comments'] = entry['data']['num_comments']
-			temp['permalink'] = entry['data']['permalink']
-			posts += temp
-	except:
-		posts = []
+	r = requests.get("https://www.reddit.com/r/coronavirus/top.json?t=day",headers = {'User-agent': 'rand0tron'})
+	x = r.json()
+	for entry in x['data']['children']:
+		temp = {}
+		
+		temp['time'] = datetime.fromtimestamp(entry['data']['created_utc']).strftime("%Y/%m/%d")
+		temp['title'] = entry['data']['title']
+		temp['score'] = entry['data']['score']
+		temp['num_comments'] = entry['data']['num_comments']
+		temp['permalink'] = entry['data']['permalink']
+		posts += [temp]
+
+	print(posts)
 	return render_template("social_media.html", data=posts)
 
 @app.route('/forecast')
@@ -93,7 +92,11 @@ def forecast():
 def news():
 	return render_template("news.html")
 
-@app.route('/sources')
-def sources():
-	return render_template("sources.html")
+@app.route('/policy')
+def policy():
+	return render_template("policy.html")
+
+@app.route('/financial')
+def financial():
+	return render_template("financial.html")
 

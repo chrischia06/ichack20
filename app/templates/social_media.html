@@ -18,7 +18,7 @@
        </tr>
      </thead>
      <tbody>
-    {% for row in posts %}
+    {% for row in data %}
     <tr>
     	<td>{{ row.time }}</td>		
     	<td>{{ row.title }} <a href = 'https://reddit.com{{ row.permalink }}'>(Link)</a></td>		
@@ -35,7 +35,7 @@
     
 <script>
 	$(document).ready(function() {
-    $('#stats').DataTable();
+    $('#reddit').DataTable();
 } );
 </script>
 
